@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Todos", type: :system do
-  it "create a todo" do
+  scenario "create a todo" do
     visit root_path
     
     click_on "Create a new todo"

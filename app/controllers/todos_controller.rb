@@ -1,6 +1,7 @@
 class TodosController < ApplicationController
   def index
-    @todos = Todo.all
+    @incomplete_todos = Todo.incomplete
+    @completed_todos = Todo.completed
   end
 
   def new
@@ -12,9 +13,16 @@ class TodosController < ApplicationController
     redirect_to todos_path
   end
 
+  def toggle
+    @todo = Todo.find(params[:id])
+    @todo.update_attributes(completed: !@todo.completed)
+
+    redirect_to todos_path
+  end
+
   private
 
   def todo_params
-    params.require(:todo).permit(:title)
+    params.require(:todo).permit(:title, :completed)
   end
 end

@@ -1,6 +1,8 @@
 <%= form_for @todo do |form| %>
 <%= form.label :title %>
 <%= form.text_field :title %>
+<%= form.label :completed %>
+<%= form.check_box :completed %>
 
 <%= form.submit %>
 <% end %>

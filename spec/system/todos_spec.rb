@@ -13,7 +13,7 @@ RSpec.describe "Todos", type: :system do
   end
 
   scenario "mark todo to complete" do 
-    FactoryBot.create(:todo)
+    FactoryBot.create(:todo, :incomplete)
     
     visit root_path
 

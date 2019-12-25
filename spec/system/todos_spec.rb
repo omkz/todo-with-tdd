@@ -13,17 +13,16 @@ RSpec.describe "Todos", type: :system do
   end
 
   scenario "mark todo to complete" do 
-    todo = FactoryBot.create(:todo)
+    FactoryBot.create(:todo)
     
     visit root_path
-
-    expect(page).to have_content "the title"
 
     within("li:contains('the title')") do
       click_on("Mark complete")
     end
 
-    expect(page).to_not have_content "Mark complete"
+    expect(page).to have_css("ul.todos.completed li", text: "the title")
+    expect(page).not_to have_css("ul.todos.incomplete li", text: "the title")
   
   end
 end
